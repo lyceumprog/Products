@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Data.SqlClient;
+using Mono.Data.Sqlite;
 using System.Collections.Generic;
 
 namespace Products
 {
 	public class DBO
 	{
-		SqlConnection connection;
+		SqliteConnection connection;
 
 		public DBO ()
 		{
 			string dbPath = "";
-			connection = new SqlConnection ("Data source=" + dbPath);
+			connection = new SqliteConnection ("Data source=" + dbPath);
 		}
 
 		public List<Product> GetProducts(){
@@ -19,7 +19,7 @@ namespace Products
 
 			connection.Open ();
 
-			using (SqlCommand command = connection.CreateCommand ()) {
+			using (SqliteCommand command = connection.CreateCommand ()) {
 				command.CommandText = "SELECT * FROM products";
 				//....
 			}

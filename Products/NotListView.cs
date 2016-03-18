@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Android.Widget;
 using Android.Content;
+using Android.Views;
 
 namespace Products
 {
@@ -13,10 +14,10 @@ namespace Products
 				RelativeLayout productView = new RelativeLayout (context);
 
 				ImageView productImage = new ImageView (context);
-				productImage.SetImageDrawable (list [i].GetImage ());
+				productImage.SetImageDrawable (list [i].GetImage (context));
 				productImage.Id = i * 10 + 1;
 
-				RelativeLayout.LayoutParams lp;
+				RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent,ViewGroup.LayoutParams.WrapContent);
 				lp.AddRule (LayoutRules.AlignParentLeft);
 				lp.AddRule (LayoutRules.CenterVertical);
 

@@ -1,5 +1,7 @@
 ﻿using System;
 using Android.Graphics;
+using Android.Content;
+using Android.Content.Res;
 
 namespace Products
 {
@@ -17,8 +19,8 @@ namespace Products
 			this.image_name = image_name;
 		}
 
-		public Bitmap GetImage(){ // Возвращает картинку по названию изображения
-			
+		public Android.Graphics.Drawables.Drawable GetImage(Context context){ // Возвращает картинку по названию изображения
+			return context.Resources.GetDrawable(context.Resources.GetIdentifier(this.image_name,"drawable",context.PackageName));
 		}
 	}
 }
