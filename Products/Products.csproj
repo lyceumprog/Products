@@ -52,6 +52,7 @@
     <Compile Include="DBO.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="NotListView.cs" />
+    <Compile Include="DatabaseCopy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -17,6 +17,8 @@ namespace Products
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
+			new DatabaseCopy (this); // copy database - TODO move to splash activity later
+
 			// Get our button from the layout resource,
 			// and attach an event to it
 

@@ -6,28 +6,40 @@ namespace Products
 {
 	public class DBO
 	{
-		SqliteConnection connection;
+		SqliteConnection dbConnection;
 
 		public DBO ()
 		{
-			string dbPath = "";
-			connection = new SqliteConnection ("Data source=" + dbPath);
+			string dbPath = 
+				System.IO.Path.Combine 
+				(System.Environment.GetFolderPath (System.Environment.SpecialFolder.Personal), 
+					"product.sqlite");
+			var dbConnection = new SqliteConnection ("Data source=" + dbPath);
 		}
 
 		public List<Product> GetProducts(){
-			List<Product> list = new List<Product> ();
+			List<Product> productList = new List<Product> ();
 
-			connection.Open ();
+			dbConnection.Open ();
 
-			using (SqliteCommand command = connection.CreateCommand ()) {
-				command.CommandText = "SELECT * FROM products";
-				//....
+			using (SqliteCommand dbCommand = dbConnection.CreateCommand ()) {
+
+				dbCommand.CommandText = "select * from products";
+
+				SqliteDataReader dbReader = dbCommand.ExecuteReader ();
+				while (dbReader.Read ()) { // TODO add links
+					/*
+					_title_ = (dbReader [_index_].ToString ());
+					_price_ = (dbReader [_index_].ToString ());
+					...
+					*/
+				}
+				dbReader.Close ();
 			}
 
-			connection.Close ();
+			dbConnection.Close ();
 
-			return list;
+			return productList;
 		}
 	}
 }
-
