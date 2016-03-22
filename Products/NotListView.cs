@@ -26,9 +26,34 @@ namespace Products
 
 				lp.AddRule (LayoutRules.AlignRight, productImage.Id);
 
-				productView.AddView (productImage);
+
+				TextView productPrice = new TextView (context);
+				productPrice.Id = i * 10 + 3;
+
+				lp.AddRule (LayoutRules.AlignBottom, productTitle.Id);
+
+				Button productPlus = new Button (context);
+				productPlus.Id = i * 10 + 4;
+
+				lp.AddRule (LayoutRules.AlignRight, productTitle.Id);
+
+				EditText productAmount = new EditText (context);
+				productAmount.Id = i * 10 + 5;
+
+				lp.AddRule (LayoutRules.AlignBottom, productPlus.Id);
+
+				Button productMinus = new Button (context);
+				productMinus.Id = i * 10 + 6;
+
+				lp.AddRule (LayoutRules.AlignRight, productAmount.Id);
+
+
+    			productView.AddView (productImage);
 				productView.AddView (productTitle);
-				//....
+				productView.AddView (productPrice);
+				productView.AddView (productPlus);
+				productView.AddView (productAmount);
+				productView.AddView (productMinus);
 
 				mainLayout.AddView (productView);
 			}
